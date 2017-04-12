@@ -1,6 +1,7 @@
 package com.ppshrimp.filmsystem.web.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ppshrimp.filmsystem.persistence.entity.User;
 import com.ppshrimp.filmsystem.persistence.service.UserService;
@@ -26,36 +26,31 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST) 
-	public String doLogin(@ModelAttribute("user")User user){
-		log.debug("Dologin");
-		try {
-			User findUser = userService.findByName(user.getName());
-			if (findUser == null) {
-				userService.create(user);
-				return "greeting";
-			} else {
-				return "login";
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "login";
-	}
-	
-	@RequestMapping(value="/login", method=RequestMethod.GET) 
+	@RequestMapping(value="/login") 
 	public String getLogin(@ModelAttribute("user")User user){
 		log.debug("get login page");
 		return "login";
 	}
 	
-    @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
+    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
+    public String greeting(User user, Model model) {
+    	try { 
+			User findUser = userService.findByName(user.getName());
+			log.debug("find out User?", !findUser.equals(null));
+		   
+			if (!findUser.equals(null) && findUser.getPassword().equals(user.getPassword())) {
+		        model.addAttribute("name", user.getName());
+		        return "greeting";
+			}
+			// 密码错误
+			else return "redirect:login";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        return "login";
     }
 
-	@RequestMapping("/hello")
+	@RequestMapping(value="/greeting")
     public void sayHello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);

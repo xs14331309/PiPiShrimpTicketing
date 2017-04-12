@@ -2,6 +2,8 @@ package com.ppshrimp.filmsystem.persistence.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.ppshrimp.filmsystem.persistence.dao.UserDao;
 import com.ppshrimp.filmsystem.persistence.entity.User;
 
 @Service("userService")
+@Transactional
 public class UserService {
 	@Autowired
 	private UserDao userDao;
@@ -26,6 +29,8 @@ public class UserService {
 	}
 	
 	public User findByName(final String name) {
+		//User user = new User("123", "123");
+		//userDao.addOne(user);
 		return userDao.findOne(name);
 	}
 }
