@@ -17,14 +17,16 @@
        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
              destroy-method="close">
               <!-- MySQL5 -->
-              <property name="driverClass" value="${driverClassName}"></property>
-              <property name="jdbcUrl" value="${url}"></property>
-              <property name="user" value="${username}"></property>
-              <property name="password" value="${password}"></property>
-              <property name="maxPoolSize" value="40"></property>
-              <property name="minPoolSize" value="1"></property>
-              <property name="initialPoolSize" value="1"></property>
-              <property name="maxIdleTime" value="20"></property>
+              <property name="driverClass" value="${jdbc.driverClass}"></property>
+              <property name="jdbcUrl" value="${jdbc.url}"></property>
+              <property name="user" value="${jdbc.username}"></property>
+              <property name="password" value="${jdbc.password}"></property>
+              <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+              <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+              <property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
+        	  <property name="maxStatements" value="${jdbc.maxStatements}"/>
+        	  <property name="testConnectionOnCheckin" value="${jdbc.testConnectionOnCheckin}"/>
+        	  <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
        </bean>
 
        <!-- session工厂 -->

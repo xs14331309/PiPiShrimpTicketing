@@ -26,13 +26,13 @@ public class UserDaoImpl implements UserDao {
         String hql = "from User u where u.name=?";  
         Query query = sessionFactory.getCurrentSession().createQuery(hql);  
         query.setString(0, name);  
-        System.out.println(((User)query.uniqueResult()).toString());
         return (User)query.uniqueResult();  
     	
     }
     
     public int addOne(User user) {
-        return (Integer) sessionFactory.getCurrentSession().save(user);	
+    	Long integer = (Long)sessionFactory.getCurrentSession().save(user);
+        return integer.intValue();
     }
     
     public int deleteOne(String name) {

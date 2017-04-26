@@ -20,8 +20,8 @@ public class UserService {
 		userDao = dao;
 	}
 	
-	public void create(final User user) {
-	    userDao.addOne(user);
+	public int create(final User user) {
+	    return userDao.addOne(user);
 	}
 	
 	public List<User> findAll() {

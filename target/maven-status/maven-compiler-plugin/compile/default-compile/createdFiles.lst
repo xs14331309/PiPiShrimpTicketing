@@ -1,5 +1,7 @@
 com/ppshrimp/filmsystem/web/controller/LoginController.class
 com/ppshrimp/filmsystem/persistence/entity/User.class
 com/ppshrimp/filmsystem/persistence/dao/UserDao.class
+com/ppshrimp/filmsystem/web/controller/IndexController.class
+com/ppshrimp/filmsystem/web/controller/RegisterController.class
 com/ppshrimp/filmsystem/persistence/service/UserService.class
 com/ppshrimp/filmsystem/persistence/dao/UserDaoImpl.class

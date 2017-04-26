@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/greeting" th:object="${user}"  method="post" class="form-signin" role="form">
+        <form action="/index" th:object="${user}"  method="post" class="form-signin" role="form">
             <h2 class="text-center form-header">用户登录</h2>
             
             <div class="form-group">
@@ -26,8 +26,7 @@
             <button class=" btn-lg" type="submit">登录</button>
         </form>
         <p class="register-tip">
-            还没有帐号？ <a class="hvr-bounce-to-bottom" th:href="@{/greeting}">点我注册</a>
-            <!--<li class="hvr-bounce-to-bottom"><a th:href="@{/register}">点我注册</a></li>-->
+            还没有帐号？ <a class="hvr-bounce-to-bottom" th:href="@{/register}">点我注册</a>
         </p>
     </div>
 </body>
