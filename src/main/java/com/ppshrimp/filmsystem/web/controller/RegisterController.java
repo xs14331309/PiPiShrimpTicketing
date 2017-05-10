@@ -32,7 +32,7 @@ public class RegisterController {
 	@RequestMapping(value = "/register", method=RequestMethod.POST)
 	public String finishRegister(@ModelAttribute("user")User user) {
 		try{
-			User findUser = userService.findByName(user.getName()); 
+			User findUser = userService.findByName(user.getUsername()); 
 			if (findUser == null) {
 				userService.create(user);
 				return "login";
@@ -40,7 +40,7 @@ public class RegisterController {
 			else {
 				// Add err message to user 
 				//
-				return "redirect:register";
+				return "register";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

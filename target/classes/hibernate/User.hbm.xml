@@ -1,0 +1,23 @@
+<?xml version="1.0"?>  
+<!DOCTYPE 
+    hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">      
+<!--   
+    <hibernate-mapping>一般不去配置，采用默认即可。  
+    schema:指定映射数据库的schema(模式/数据库)，如果指定该属性，则表名会自动添加该schema前缀  
+    package:指定包前缀 指定持久化类所在的包名 这样之后calss子元素中就不必使用全限定性的类名  
+    default-cascade="none"：默认的级联风格，表与表联动。  
+    default-lazy="true"：默认延迟加载  
+ -->  
+<hibernate-mapping>  
+    <class name="com.ppshrimp.filmsystem.persistence.entity.User" table="USER">
+        <id name ="userId" column="userId" type="long">
+            <generator class="native"></generator>
+        </id>
+        <property name="username" column="username" type="string"></property>
+        <property name="password" column="password" type="string"></property>
+        <property name="nickname" column="nickname" type="string"></property>
+        <property name="iChat" column="iChat" type="boolean"></property>
+    </class>    
+</hibernate-mapping>

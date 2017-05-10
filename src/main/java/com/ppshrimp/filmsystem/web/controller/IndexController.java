@@ -1,6 +1,8 @@
 package com.ppshrimp.filmsystem.web.controller;
 
 
+import java.util.List;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -9,43 +11,49 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ppshrimp.filmsystem.persistence.entity.Movie;
 import com.ppshrimp.filmsystem.persistence.entity.User;
+import com.ppshrimp.filmsystem.persistence.service.MovieService;
 import com.ppshrimp.filmsystem.persistence.service.UserService;
 
 
 @Controller
+@RequestMapping(value = "/index")
 public class IndexController {
 	private static Logger log = LoggerFactory.getLogger(IndexController.class);
 	
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/index")
+	@Autowired
+	private MovieService movieService;
+	
+	@RequestMapping(value = "")
 	public String getIndex(Model model) {
-		model.addAttribute("name", "游客"); // 初始化信息
+		model.addAttribute("username", "游客"); // 初始化信息
 		
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.getPrincipal() != null) // 更新信息
-	       model.addAttribute("name", subject.getPrincipal().toString());
+	       model.addAttribute("username", subject.getPrincipal().toString());
 		
 		return "index";
 	}
 	
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public String greeting(User user, Model model) {
     	try {
-            String name = user.getName();
+            String username = user.getUsername();
             String password = user.getPassword();
             
-			User findUser = userService.findByName(name);
+			User findUser = userService.findByName(username);
 			log.debug("find out User?", !findUser.equals(null));
 		    
-			UsernamePasswordToken token = new UsernamePasswordToken(name, password);
+			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			token.setRememberMe(true);
 			Subject subject = SecurityUtils.getSubject();
 			
@@ -53,7 +61,7 @@ public class IndexController {
 				subject.login(token);
 				if (subject.isAuthenticated()) {
 					System.out.println("OK");
-					model.addAttribute("name", user.getName());
+					model.addAttribute("username", user.getUsername());
 			        return "index";
 				}
 				else {
@@ -76,9 +84,21 @@ public class IndexController {
     }
     
     @RequestMapping(value="/hello") 
-	public String getHeloo(){
+	public String getHello(){
 		log.debug("get login page");
 		return "hello";
+	}
+    
+    @RequestMapping(value="/movie", method=RequestMethod.GET)
+	public @ResponseBody List<Movie> getMovies(){
+    	List<Movie> movies  = movieService.findAll();
+    	return movies;
+	}
+    
+    @RequestMapping(value="/movie/{value}", method=RequestMethod.GET)
+	public @ResponseBody Movie getMovieById(@PathVariable String value) {
+    	Movie movie  = movieService.findOne(value);
+    	return movie;
 	}
     
 }

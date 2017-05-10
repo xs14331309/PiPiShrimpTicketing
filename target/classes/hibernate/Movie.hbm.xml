@@ -1,0 +1,36 @@
+<?xml version="1.0"?>  
+<!DOCTYPE 
+    hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">      
+<!--   
+    <hibernate-mapping>一般不去配置，采用默认即可。  
+    schema:指定映射数据库的schema(模式/数据库)，如果指定该属性，则表名会自动添加该schema前缀  
+    package:指定包前缀 指定持久化类所在的包名 这样之后calss子元素中就不必使用全限定性的类名  
+    default-cascade="none"：默认的级联风格，表与表联动。  
+    default-lazy="true"：默认延迟加载  
+ -->  
+<hibernate-mapping>  
+<!-- 
+    private long movieId;
+	private String moviename;
+	private String imgUrl;
+	private String director;
+    private String actor;
+    private String brief;
+    private int length;
+    private float score;
+ -->
+    <class name="com.ppshrimp.filmsystem.persistence.entity.Movie" table="MOVIE">
+        <id name ="movieId" column="movieId" type="long">
+            <generator class="native"></generator>
+        </id>
+        <property name="moviename" column="moviename" type="string"></property>
+        <property name="imgUrl" column="imgUrl" type="string"></property>
+        <property name="director" column="director" type="string"></property>
+        <property name="actor" column="actor" type="string"></property>
+        <property name="brief" column="brief" type="string"></property>
+        <property name="length" column="length" type="int"></property>
+        <property name="score" column="score" type="float"></property>
+    </class>    
+</hibernate-mapping>

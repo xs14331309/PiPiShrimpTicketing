@@ -43,11 +43,17 @@
                             <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                      </props>
               </property>
-              <property name="annotatedClasses">  
+              <!-- <property name="annotatedClasses">  
 	            <list>  
 	                <value>com.ppshrimp.filmsystem.persistence.entity.User</value>  
 	            </list>  
-        	  </property>  
+        	  </property>  -->
+        	  <property name="mappingResources">  
+                  <list>
+                      <value>/hibernate/User.hbm.xml</value>
+                      <value>/hibernate/Movie.hbm.xml</value>
+                  </list>  
+        	  </property> 
        </bean>
 
        <bean id="transactionManager"
