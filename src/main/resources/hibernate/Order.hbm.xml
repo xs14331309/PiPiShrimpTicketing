@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ppshrimp.filmsystem.persistence.entity" >
+    <!-- 一个class标签对应一个实体类，name属性指定实体类名称，table属性指定关联的数据库表 -->
+    <class name="Order" table="ORDERTB">
+        <!-- 主键 -->
+        <id name="orderId" column="orderId" type="long">
+            <!-- 提供ID自增的策略  native会根据数据库自行判断 -->
+            <generator class="native"></generator>
+        </id>
+        <!-- 其他属性，name对应实体类的属性，column对应关系型数据库表的列 -->
+        <property name="username" column="username" type="string" />
+        <property name="ciname" column="ciname" type="string" />
+        <property name="mvname" column="mvname" type="string" />
+        <property name="tnum" column="tnum" type="integer" />
+        <property name="hnum" column="hnum" type="integer" />
+    </class>
+</hibernate-mapping>

@@ -10,7 +10,7 @@
     default-cascade="none"：默认的级联风格，表与表联动。  
     default-lazy="true"：默认延迟加载  
  -->  
-<hibernate-mapping>  
+<hibernate-mapping package="com.ppshrimp.filmsystem.persistence.entity">
 <!-- 
     private long movieId;
 	private String moviename;
@@ -20,8 +20,10 @@
     private String brief;
     private int length;
     private float score;
+    private Date releaseTime;
+    private Date shelfTime;
  -->
-    <class name="com.ppshrimp.filmsystem.persistence.entity.Movie" table="MOVIE">
+    <class name="Movie" table="MOVIE">
         <id name ="movieId" column="movieId" type="long">
             <generator class="native"></generator>
         </id>
@@ -32,5 +34,13 @@
         <property name="brief" column="brief" type="string"></property>
         <property name="length" column="length" type="int"></property>
         <property name="score" column="score" type="float"></property>
-    </class>    
+        <property name="releaseTime" column="releaseTime" type="date"></property>
+        <property name="shelfTime" column="shelfTime" type="date"></property>
+        <!--roleResources,与RoleResource的一对多关系-->
+        <set name="cmPos" order-by="movieId ASC" inverse="true" lazy="false">
+            <key column="movieId"/>
+            <one-to-many class="CinemaMoviePos"/>
+        </set>
+    </class>
+    
 </hibernate-mapping>

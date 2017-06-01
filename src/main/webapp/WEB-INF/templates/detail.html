@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${ title }"></title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <!-- //for bootstrap working -->
+
+
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+	
+<body>
+<!-- header -->
+	<div class="header" th:include="fragment/header :: .header">
+	</div>
+<!-- //header -->
+<!-- banner -->
+	<div class="container" th:object="${ movie } ">
+		<h3 id="food-name" th:text="*{ moviename }">电影名</h3>
+		<div class="single-left">
+			<img id="food-pic" th:src="*{ imgUrl }" alt=" " class="img-responsive" />
+		</div>
+		<div class="single-right">
+			<!-- <p id="food-info1" th:text="*{ price }">价格</p> -->
+		</div>
+		<div class="clearfix"> </div>
+		<div class="three-com buy-part">
+			<!--<h3>3  <span>on</span> <label>volutpat</label></h3>-->
+			<div class="tom-grid">
+				<div class="tom-right">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3">
+								<form id="order-form"  method="POST">
+									<fieldset>
+										<label class="control-label">选择数量</label>
+										<div class="form-group input-group">
+											 
+											<input id="colorful" class="form-control" type="number" value="1" min="1" max="10" />
+							                    <span class="input-group-btn">
+							                    <input class="btn btn-warning" type="submit" value="购买!" />
+							                        <!-- <button class="btn btn-warning" type="button" onclick=window.location.href="/order">购买</button> -->
+							                    </span>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- //banner-bottom1 -->
+
+	<!--- footer --->
+		<div class="footer" th:include="fragment/footer :: .footer">
+		</div>
+		<div class="clear"> </div>
+		<!--- //footer --->
+	</body>
+
+    <!-- js -->
+    <script th:src="@{/js/jquery-1.11.1.min.js}"></script>
+    <!-- //js -->
+    <!-- for bootstrap working -->
+    <script th:src="@{/js/bootstrap.js}"> </script>
+</html>

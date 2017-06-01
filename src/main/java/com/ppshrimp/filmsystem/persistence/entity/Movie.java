@@ -1,6 +1,13 @@
 package com.ppshrimp.filmsystem.persistence.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Movie implements Serializable {
     /**
@@ -17,6 +24,10 @@ public class Movie implements Serializable {
     private String brief;
     private int length;
     private float score;
+    private Date releaseTime;
+    private Date shelfTime;
+    
+    private Set<CinemaMoviePos> cmPos = new HashSet<>();
     
     /*
      * private String type;
@@ -27,13 +38,15 @@ public class Movie implements Serializable {
     	super();
     }
     
-	public Movie(String moviename, String actor, String brief, String director, int length, float score) {
+	public Movie(String moviename, String actor, String brief, String director, int length, float score, Date rDate, Date sDate) {
 		this.moviename = moviename;
 		this.actor = actor;
 		this.brief = brief;
 		this.director = director;
 		this.length = length;
 		this.score = score;
+		this.releaseTime = rDate;
+		this.shelfTime = sDate;
 	}
 	
 	public long getMovieId() {
@@ -86,4 +99,30 @@ public class Movie implements Serializable {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+
+	public Date getReleaseTime() {
+		return releaseTime;
+	}
+
+	public void setReleaseTime(Date releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+
+	public Date getShelfTime() {
+		return shelfTime;
+	}
+
+	public void setShelfTime(Date shelfTime) {
+		this.shelfTime = shelfTime;
+	}
+
+	public Set<CinemaMoviePos> getCmPos() {
+		return cmPos;
+	}
+    
+	@JsonBackReference
+	public void setCmPos(Set<CinemaMoviePos> cmPos) {
+		this.cmPos = cmPos;
+	}
+
 }

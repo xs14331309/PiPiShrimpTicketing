@@ -69,9 +69,4 @@ public class User implements Serializable  {
 		this.iChat = iChat;
 	}
 	
-	@Override
-	public String toString() {
-		String toString = "[ id = " + userId + ", username= " + username + ", password = " + password + "]";
-		return toString;
-	}
 }

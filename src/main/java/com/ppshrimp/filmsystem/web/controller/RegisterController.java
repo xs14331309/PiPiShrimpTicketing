@@ -23,7 +23,7 @@ public class RegisterController {
 		return new User();
 	}
 	
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "/register", method=RequestMethod.GET)
     public String getRegister(final User customer) {
 		log.info("Register Page");
         return "register";

@@ -33,7 +33,8 @@ public class IndexController {
 	@Autowired
 	private MovieService movieService;
 	
-	@RequestMapping(value = "")
+	// 获取Index Page
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getIndex(Model model) {
 		model.addAttribute("username", "游客"); // 初始化信息
 		
@@ -41,9 +42,14 @@ public class IndexController {
 		if (subject.getPrincipal() != null) // 更新信息
 	       model.addAttribute("username", subject.getPrincipal().toString());
 		
+		model.addAttribute("title", "首页");
+		List<Movie> movies = movieService.findAll();
+		model.addAttribute("movies", movies);
+		
 		return "index";
 	}
 	
+	// 登录请求
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String greeting(User user, Model model) {
     	try {
@@ -80,25 +86,13 @@ public class IndexController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return "login";
+        return "redict:login";
     }
     
+    // Shrio测试
     @RequestMapping(value="/hello") 
 	public String getHello(){
 		log.debug("get login page");
 		return "hello";
-	}
-    
-    @RequestMapping(value="/movie", method=RequestMethod.GET)
-	public @ResponseBody List<Movie> getMovies(){
-    	List<Movie> movies  = movieService.findAll();
-    	return movies;
-	}
-    
-    @RequestMapping(value="/movie/{value}", method=RequestMethod.GET)
-	public @ResponseBody Movie getMovieById(@PathVariable String value) {
-    	Movie movie  = movieService.findOne(value);
-    	return movie;
-	}
-    
+	}   
 }

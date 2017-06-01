@@ -1,9 +1,9 @@
 package com.ppshrimp.filmsystem.persistence.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,10 +18,24 @@ public class MovieDaoImpl implements MovieDao {
     
     @SuppressWarnings("unchecked")
     @Override
-	public List<Movie> findAll() {
+	public List<Movie> findAll() throws ClassCastException {
     	Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Movie.class);
         return (List<Movie>)criteria.list();
     }
+    
+    // date在上映期间
+	@Override
+	public List<Movie> findAllOnShow(Date date) {
+		String hql = "from Movie m where ? between m.releaseTime and m.shelfTime";
+		
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setParameter(0, date)
+        		.list();  
+		
+		return movies;
+	}
     
     @Override
     public Movie findOneById(long id) {
@@ -33,9 +47,13 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	public Movie findOneByName(String name) {
     	String hql = "from Movie m where m.moviename=?";  
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);  
-        query.setString(0, name);  
-        List<Movie> movies = query.list();
+    	List<Movie> movies = sessionFactory.getCurrentSession()
+						        		.createQuery(hql)
+						        		.setString(0, name)
+						        		.list();  
+        
         return movies.isEmpty() ? null : movies.get(0);
 	}
+
+
 }

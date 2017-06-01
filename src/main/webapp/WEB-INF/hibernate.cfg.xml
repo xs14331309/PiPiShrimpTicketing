@@ -52,6 +52,9 @@
                   <list>
                       <value>/hibernate/User.hbm.xml</value>
                       <value>/hibernate/Movie.hbm.xml</value>
+                      <value>/hibernate/Cinema.hbm.xml</value>
+                      <value>/hibernate/CMPos.hbm.xml</value>
+                      <value>/hibernate/Order.hbm.xml</value>
                   </list>  
         	  </property> 
        </bean>
