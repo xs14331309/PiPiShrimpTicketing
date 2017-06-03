@@ -28,7 +28,18 @@ public class CinemaService {
 		return cinemaDao.getByAddr(city);
 	}
 	
-	// TODO 查找用户附近电影院GPS
+	// 查找用户附近电影院GPS
+	public List<Cinema> getCinemasByPos(float lo, float la) {
+		float threshold = 0.5f;
+		int n = 3;
+		List<Cinema> cinemas = null;
+		do {
+			cinemas = cinemaDao.getByPos(la, lo, threshold);
+			threshold += 0.2f;
+			n--;
+		} while (n > 0 & cinemas != null);
+		return cinemas;
+	}
 	
 	// 查找某电影有余票的
 	public List<CinemaMoviePos> getMoviesByCinemaId(long id) {

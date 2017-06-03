@@ -48,10 +48,17 @@ public class BookController {
 	}
 	
 	// book/csearch?city=string
-	@RequestMapping(value="/asearch", method=RequestMethod.GET)
+	@RequestMapping(value="/asearch/city/{cityname}", method=RequestMethod.GET)
 	public @ResponseBody List<Cinema> getCinemasByAddr(
-			@RequestParam("city") String city) {
+			@PathVariable("city") String city) {
 		return cinemaService.getCinemasByAddr(city);
+		
+	}
+	
+	@RequestMapping(value="/asearch/pos/{lo}/{la}", method=RequestMethod.GET)
+	public @ResponseBody List<Cinema> getCinemasByPos(
+			@PathVariable("lo") float longitude, @PathVariable("la") float lattitude) {
+		return cinemaService.getCinemasByPos(longitude, lattitude);
 		
 	}
 	

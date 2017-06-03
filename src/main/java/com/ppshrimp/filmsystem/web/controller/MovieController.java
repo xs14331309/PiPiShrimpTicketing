@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,14 +22,12 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
-    /*    
-    @RequestMapping(value="/movie/{value}", method=RequestMethod.GET)
-	public String getMovieById(@PathVariable String value, Model model) {
-    	model.addAttribute("title", "电影详情");
-    	Movie movie  = movieService.findOne(value);
-    	model.addAttribute("movie", movie);
-    	return "detail";
-	}*/
+    
+    @RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
+	public @ResponseBody Movie getMovieById(@PathVariable(name="id", required=true) Integer value) throws NullPointerException {
+    	Movie movie  = movieService.findOneById(value.intValue());
+        return movie;
+	}
 	
 	// /movie/detial?movieId=123
     @RequestMapping(value="/detail", method=RequestMethod.GET)

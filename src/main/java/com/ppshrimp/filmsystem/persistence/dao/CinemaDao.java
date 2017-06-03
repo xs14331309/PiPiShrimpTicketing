@@ -10,5 +10,9 @@ public interface CinemaDao {
     
     List<Cinema> getByAddr(String city);
     
+    List<Cinema> getByPos(float lo, float la,  float threshold);
+    
     List<CinemaMoviePos> getById(long id);
+    
+    
 }

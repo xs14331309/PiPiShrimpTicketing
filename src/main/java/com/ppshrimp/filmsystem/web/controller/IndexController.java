@@ -48,46 +48,6 @@ public class IndexController {
 		
 		return "index";
 	}
-	
-	// 登录请求
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String greeting(User user, Model model) {
-    	try {
-            String username = user.getUsername();
-            String password = user.getPassword();
-            
-			User findUser = userService.findByName(username);
-			log.debug("find out User?", !findUser.equals(null));
-		    
-			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-			token.setRememberMe(true);
-			Subject subject = SecurityUtils.getSubject();
-			
-			try{
-				subject.login(token);
-				if (subject.isAuthenticated()) {
-					System.out.println("OK");
-					model.addAttribute("username", user.getUsername());
-			        return "index";
-				}
-				else {
-					System.out.println("No");
-					return "redirect:login";
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			/*if (!findUser.equals(null) && findUser.getPassword().equals(user.getPassword())) {
-		        model.addAttribute("name", user.getName());
-		        return "greeting";
-			}
-			// 密码错误
-			else return "redirect:login";*/
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        return "redict:login";
-    }
     
     // Shrio测试
     @RequestMapping(value="/hello") 
