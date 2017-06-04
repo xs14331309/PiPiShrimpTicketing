@@ -31,6 +31,10 @@ public class MovieService {
 		return movieDao.findAllOnShow(date);
 	}
 	
+	public List<Movie> findTopTen(Date date) {
+		return movieDao.findTopTen(date);
+	}
+	
 	public Movie findOneById(long id) {
 		return movieDao.findOneById(id);
 	}

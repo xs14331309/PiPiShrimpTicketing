@@ -19,6 +19,7 @@
         <property name="tnum" column="tnum" type="integer" not-null="true" unique-key="movieUique" />
         <property name="hnum" column="hnum" type="integer" not-null="true" unique-key="movieUique" />
         <property name="price" column="price" type="float" not-null="true" />
+        <property name="time" column="time" type="string" not-null="true" />
         <!--role,与Role的多对一关系-->
         <many-to-one name="cinema" class="Cinema" column="cinemaId" unique-key="movieUique" />
         <!--resource,与Resource的多对一关系-->

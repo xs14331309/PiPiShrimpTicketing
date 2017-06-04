@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +27,7 @@ public class MovieDaoImpl implements MovieDao {
     // date在上映期间
 	@Override
 	public List<Movie> findAllOnShow(Date date) {
-		String hql = "from Movie m where ? between m.releaseTime and m.shelfTime";
+		String hql = "from Movie m where ? between m.releaseTime and m.shelfTime Order by m.releaseTime desc";
 		
 		@SuppressWarnings("unchecked")
 		List<Movie> movies = sessionFactory.getCurrentSession()
@@ -53,6 +54,19 @@ public class MovieDaoImpl implements MovieDao {
 						        		.list();  
         
         return movies.isEmpty() ? null : movies.get(0);
+	}
+
+	@Override
+	public List<Movie> findTopTen(Date date) {
+        String hql = "from Movie m where ? between m.releaseTime and m.shelfTime Order by m.score desc";
+		
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setParameter(0, date)
+        		.list();  
+		
+		return movies;
 	}
 
 

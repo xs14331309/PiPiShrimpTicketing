@@ -12,4 +12,9 @@ public class DateHelper {
 		return Date.valueOf(f.format(c.getTime()));
     }
    
+    public String getCurrentTime() {
+    	Calendar c=java.util.Calendar.getInstance(); 
+		SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");      
+		return f.format(c.getTime());
+    }
 }

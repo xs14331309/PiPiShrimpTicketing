@@ -34,10 +34,10 @@ public class CinemaService {
 		int n = 3;
 		List<Cinema> cinemas = null;
 		do {
-			cinemas = cinemaDao.getByPos(la, lo, threshold);
+			cinemas = cinemaDao.getByPos(lo, la, threshold);
 			threshold += 0.2f;
 			n--;
-		} while (n > 0 & cinemas != null);
+		} while (n > 0 & (cinemas != null | cinemas.size() < 2));
 		return cinemas;
 	}
 	

@@ -14,6 +14,8 @@ public class ThHelper implements Serializable {
     private long movieId;
 	private int tnum;
 	private int hnum;
+	private float price;
+	private String time;
 	
 	public ThHelper() {
 		this.movieId = -1;
@@ -21,14 +23,14 @@ public class ThHelper implements Serializable {
 		this.hnum = -1;
 	}
 	
-	public ThHelper(long movieId, int tnum, int hnum) {
+	public ThHelper(long movieId, int tnum, int hnum, float price,  String time) {
 		this.movieId = movieId;
 		this.tnum = tnum;
 		this.hnum = hnum;
 	}
 	
 	public ThHelper (CinemaMoviePos m) {
-		this(m.getMovie().getMovieId(), m.getTnum(), m.getHnum());
+		this(m.getMovie().getMovieId(), m.getTnum(), m.getHnum(), m.getPrice(), m.getTime());
 	}
 	
 	// getter and setter
@@ -49,6 +51,22 @@ public class ThHelper implements Serializable {
 	}
 	public void setHnum(int hnum) {
 		this.hnum = hnum;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	
     

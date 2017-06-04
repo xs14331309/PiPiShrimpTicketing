@@ -1,5 +1,6 @@
 package com.ppshrimp.filmsystem.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,31 @@ public class MovieController {
     
     // 获取正在上映的电影
     @RequestMapping(value="/onShowMv", method=RequestMethod.GET)
-	public @ResponseBody List<Movie> getAllOnShowMovies() {
+	public @ResponseBody List<Movie> getAllOnShowMovies(
+			@RequestParam(value="num", required=false, defaultValue = "1") int num) {
         DateHelper dh = new DateHelper();
     	List<Movie> movies  = movieService.findAllOnShow(dh.getCurrentDate());
-    	return movies;
+    	if (movies == null)
+    		return new ArrayList<>();
+    	if (movies != null && movies.size() <= num)
+    		return movies;
+    	else {
+	    	return movies.subList(0, num);
+    	}
 	}
+    
+    @RequestMapping(value="/topTen", method=RequestMethod.GET)
+    public @ResponseBody List<Movie> getTopTenOnShowMovies(
+    		@RequestParam(value="num", required=false, defaultValue = "10") int num) {
+    	DateHelper dh = new DateHelper();
+    	List<Movie> movies  = movieService.findTopTen(dh.getCurrentDate());
+    	if (movies == null)
+    		return new ArrayList<>();
+    	if (movies != null && movies.size() <= num)
+    		return movies;
+    	else {
+	    	return movies.subList(0, num);
+    	}
+    }
     
 }

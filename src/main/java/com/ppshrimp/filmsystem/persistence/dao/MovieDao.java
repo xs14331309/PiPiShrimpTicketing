@@ -11,6 +11,8 @@ public interface MovieDao {
     
     List<Movie> findAllOnShow(Date date);
     
+    List<Movie> findTopTen(Date date);
+    
     Movie findOneById(long id);
     
     Movie findOneByName(String name);

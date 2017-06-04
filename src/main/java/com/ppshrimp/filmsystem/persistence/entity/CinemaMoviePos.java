@@ -16,6 +16,7 @@ public class CinemaMoviePos implements Serializable {
 	private int tnum; // 时间场次
 	private int hnum; // 影厅
 	private float price;
+	private String time;
 	
 	public CinemaMoviePos() {
 		super();
@@ -75,6 +76,14 @@ public class CinemaMoviePos implements Serializable {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }

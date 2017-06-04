@@ -16,6 +16,7 @@ public class Order implements Serializable {
 	private String mvname;
 	private int tnum;
 	private int hnum;
+
 	// 待定
 	// private float price;
 	
@@ -65,5 +66,6 @@ public class Order implements Serializable {
 	public void setHnum(int hnum) {
 		this.hnum = hnum;
 	}
+
 
 }
