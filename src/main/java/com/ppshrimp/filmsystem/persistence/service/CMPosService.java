@@ -27,4 +27,12 @@ public class CMPosService {
 	    return ths;
 	}
 	
+	public String searchPosByCidMidTnumHnum(long cid, long mid, int tnum, int hum) {
+		return cmPosDao.getPos(cid, mid, tnum, hum);
+	}
+	
+	public boolean modifyPosByCidMidTnumHnum(String newPos, long cid, long mid, int tnum, int hnum) {
+		return cmPosDao.modifyPos(newPos, cid, mid, tnum, hnum);
+	}
+	
 }

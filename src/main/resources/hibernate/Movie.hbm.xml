@@ -32,6 +32,7 @@
         <property name="director" column="director" type="string"></property>
         <property name="actor" column="actor" type="string"></property>
         <property name="brief" column="brief" type="string"></property>
+        <property name="type" column="type" type="string"></property>
         <property name="length" column="length" type="int"></property>
         <property name="score" column="score" type="float"></property>
         <property name="releaseTime" column="releaseTime" type="date"></property>

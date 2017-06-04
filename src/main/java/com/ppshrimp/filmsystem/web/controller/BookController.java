@@ -1,17 +1,21 @@
 package com.ppshrimp.filmsystem.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +31,7 @@ import com.ppshrimp.filmsystem.util.ThHelper;
 
 
 @Controller
+@CrossOrigin
 @RequestMapping(value="/book")
 public class BookController {
 	private static Logger log = LoggerFactory.getLogger(BookController.class);
@@ -77,63 +82,72 @@ public class BookController {
 		}
 	}
 	
+	@RequestMapping(value="/psearch/{cid}/{mid}/{tnum}/{hnum}", method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> getPosByCidMidTumHum(
+			@PathVariable("cid") long cid, @PathVariable("mid") long mid,
+			@PathVariable("tnum") int tnum, @PathVariable("hnum") int hnum) {
+		Map<String, String> map = new HashMap<>();
+		try {
+			String pos = cmPosService.searchPosByCidMidTnumHnum(cid, mid, tnum, hnum);
+			if (pos == null) {
+				map.put("result", "fail");
+				return map;
+			} else {
+				map.put("result", "success");
+				map.put("pos", pos);
+				return map;
+			}
+		} catch (Exception e) {
+			map.put("result", "error");
+			return map;
+		} 
+	}
+	
 	@RequestMapping(value="/confirm", method=RequestMethod.POST)
 	public @ResponseBody Map<String, String> confirmOrder(
-			HttpServletRequest request) {
+			@RequestParam("username") String username,
+			@RequestParam("cid") Long cid,
+			@RequestParam("mid") Long mid,
+			@RequestParam("hnum") Integer hnum,
+			@RequestParam("tnum") Integer tnum,
+			@RequestParam("seat") String seatsString) {
 		Map<String, String> map = new HashMap<>();
 		try{
-			String tnums = request.getParameter("tnum");
-			String username = request.getParameter("username");
-			String ciname = request.getParameter("ciname");
-			String mvname = request.getParameter("mvname");
-			int hnum = Integer.parseInt(request.getParameter("hnum"));
-			String[] list = tnums.split(" ");
-			for (String tnum : list) {
-				Order order = new Order();
-	        	int t = Integer.parseInt(tnum);
-	    		//order2.setUsername(subject.getPrincipal().toString());
-	        	order.setUsername(username);
-	        	order.setCiname(ciname);
-	        	order.setMvname(mvname);
-	        	order.setTnum(t);
-	        	order.setHnum(hnum);
-	    		orderService.create(order);
+			String[] seats = seatsString.split("_");
+			List<Order> olist = new ArrayList<>();
+			String pos = cmPosService.searchPosByCidMidTnumHnum(cid, mid, tnum, hnum);
+			StringBuilder strBuilder = new StringBuilder(pos);
+			for (String seat : seats) {
+				int s = Integer.parseInt(seat);
+	    		if (strBuilder.charAt(s) == '0') {
+	    			strBuilder.setCharAt(s, '1');
+					Order order = new Order();
+		    		//order2.setUsername(subject.getPrincipal().toString());
+		        	order.setUsername(username);
+		        	order.setCinemaId(cid);
+		        	order.setMovieId(mid);
+		        	order.setTnum(tnum);
+		        	order.setHnum(hnum);
+		        	order.setSeat(s);
+	    			olist.add(order);
+	    			}
+	    		else {
+	    			map.put("result", "fail");
+	    			map.put("message", "座位已占用");
+	    			return map;
+	    		}
 			}
+			for (int i = 0; i < olist.size(); i++) {
+				orderService.create(olist.get(i));	    
+			}
+			cmPosService.modifyPosByCidMidTnumHnum(strBuilder.toString(), cid, mid, tnum, hnum);
 			map.put("result", "success");
-			//map.put(Result, value)
 			return map;
+
 		} catch (Exception e) {
+			//e.printStackTrace();
 			map.put("result", "fail");
 			return map;
 		}
-	}
-	
-	
-	// 订票
-	// book/buy/{12_13}
-	@RequestMapping(value="/buy/{tnums}", method=RequestMethod.GET)
-	public @ResponseBody List<Order> doBuy(@PathVariable String tnums) {
-		/*Subject subject = SecurityUtils.getSubject();
-		if (!subject.isAuthenticated())
-			return null;*/
-		String mvname = "银河护卫队";
-		String ciname = "广州万达1";
-        int hnum = 2;
-        DateHelper dh = new DateHelper();
-        String[] list = tnums.split("_");
-        for (String string : list) {
-        	Order order2 = new Order();
-        	int t = Integer.parseInt(string);
-    		//order2.setUsername(subject.getPrincipal().toString());
-        	order2.setUsername("123");
-    		order2.setCiname(ciname);
-    		order2.setMvname(mvname);
-    		order2.setTnum(t);
-    		order2.setHnum(hnum);
-    		orderService.create(order2);
-        }
-		
-		//return orderService.getOrderByUserName(subject.getPrincipal().toString());
-        return orderService.getOrderByUserName("123");
 	}
 }

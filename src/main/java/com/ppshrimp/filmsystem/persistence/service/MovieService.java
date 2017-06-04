@@ -1,6 +1,7 @@
 package com.ppshrimp.filmsystem.persistence.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -41,6 +42,21 @@ public class MovieService {
 	
 	public Movie findOneByName(String name) {
 		return movieDao.findOneByName(name);
+	}
+	
+	public List<Movie> searchMovie(String msg) {
+		List<Movie> movies = new ArrayList<>();
+		movies.addAll(movieDao.searchMovieName(msg));
+		movies.addAll(movieDao.searchActor(msg));
+		movies.addAll(movieDao.searchDirector(msg));
+		movies.addAll(movieDao.searchType(msg));
+		return movies;
+	}
+	
+	public List<Movie> searchMovieName(String msg) {
+		List<Movie> movies = new ArrayList<>();
+		movies.addAll(movieDao.searchMovieName(msg));
+		return movies;
 	}
 	
 	// ID(优先）或者名字查找

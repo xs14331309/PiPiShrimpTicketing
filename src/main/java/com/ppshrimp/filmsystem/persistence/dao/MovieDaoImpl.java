@@ -9,6 +9,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ppshrimp.filmsystem.persistence.entity.Cinema;
 import com.ppshrimp.filmsystem.persistence.entity.Movie;
 
 @Repository
@@ -66,6 +67,54 @@ public class MovieDaoImpl implements MovieDao {
         		.setParameter(0, date)
         		.list();  
 		
+		return movies;
+	}
+
+	@Override
+	public List<Movie> searchMovieName(String msg) {
+		String hql = "FROM Movie m WHERE m.moviename LIKE :param0 order by case when m.moviename LIKE :param1 then 1 else 0 end desc";
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = (List<Movie>)sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setString("param0", "%" + msg + "%")
+        		.setString("param1", msg+"%")
+        		.list();
+		return movies;
+	}
+
+	@Override
+	public List<Movie> searchDirector(String msg) {
+		String hql = "FROM Movie m WHERE m.director LIKE :param0 order by case when m.director LIKE :param1 then 1 else 0 end desc";
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = (List<Movie>)sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setString("param0", "%" + msg + "%")
+        		.setString("param1", msg+"%")
+        		.list();
+		return movies;
+	}
+
+	@Override
+	public List<Movie> searchActor(String msg) {
+		String hql = "FROM Movie m WHERE m.actor LIKE :param0 order by case when m.actor LIKE :param1 then 1 else 0 end desc";
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = (List<Movie>)sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setString("param0", "%" + msg + "%")
+        		.setString("param1", msg+"%")
+        		.list();
+		return movies;
+	}
+
+	@Override
+	public List<Movie> searchType(String msg) {
+		String hql = "FROM Movie m WHERE m.type LIKE :param0 order by case when m.type LIKE :param1 then 1 else 0 end desc";
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = (List<Movie>)sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setString("param0", "%" + msg + "%")
+        		.setString("param1", msg+"%")
+        		.list();
 		return movies;
 	}
 

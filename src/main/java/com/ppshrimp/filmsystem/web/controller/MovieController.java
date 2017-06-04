@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.ppshrimp.filmsystem.persistence.service.MovieService;
 import com.ppshrimp.filmsystem.util.DateHelper;
 
 @Controller
+@CrossOrigin
 @RequestMapping("movie")
 public class MovieController {
 	
@@ -41,7 +43,7 @@ public class MovieController {
     
     
     @RequestMapping(value="/allMv", method=RequestMethod.GET)
-	public @ResponseBody List<Movie> getAllMovies(){
+	public @ResponseBody List<Movie> getAllMovies() {
     	List<Movie> movies  = movieService.findAll();
     	return movies;
 	}
@@ -49,7 +51,7 @@ public class MovieController {
     // 获取正在上映的电影
     @RequestMapping(value="/onShowMv", method=RequestMethod.GET)
 	public @ResponseBody List<Movie> getAllOnShowMovies(
-			@RequestParam(value="num", required=false, defaultValue = "1") int num) {
+			@RequestParam(value="num", required=false, defaultValue = "12") int num) {
         DateHelper dh = new DateHelper();
     	List<Movie> movies  = movieService.findAllOnShow(dh.getCurrentDate());
     	if (movies == null)
@@ -63,7 +65,7 @@ public class MovieController {
     
     @RequestMapping(value="/topTen", method=RequestMethod.GET)
     public @ResponseBody List<Movie> getTopTenOnShowMovies(
-    		@RequestParam(value="num", required=false, defaultValue = "10") int num) {
+    		@RequestParam(value="num", required=false, defaultValue = "12") int num) {
     	DateHelper dh = new DateHelper();
     	List<Movie> movies  = movieService.findTopTen(dh.getCurrentDate());
     	if (movies == null)
@@ -73,6 +75,13 @@ public class MovieController {
     	else {
 	    	return movies.subList(0, num);
     	}
+    }
+    
+    
+    @RequestMapping(value="/search", method=RequestMethod.GET)
+    public @ResponseBody List<Movie> searchMovie(
+    		@RequestParam(name="msg", required=true) String msg) {
+    		return movieService.searchMovie(msg);
     }
     
 }

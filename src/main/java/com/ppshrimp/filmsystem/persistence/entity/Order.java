@@ -12,10 +12,11 @@ public class Order implements Serializable {
     
 	private long orderId;
 	private String username;
-	private String ciname;
-	private String mvname;
+	private long cinemaId;
+	private long movieId;
 	private int tnum;
 	private int hnum;
+	private int seat;
 
 	// 待定
 	// private float price;
@@ -34,23 +35,11 @@ public class Order implements Serializable {
 	public String getUsername() {
 		return username;
 	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	public String getCiname() {
-		return ciname;
-	}
-	public void setCiname(String ciname) {
-		this.ciname = ciname;
-	}
-	public String getMvname() {
-		return mvname;
-	}
-	public void setMvname(String mvname) {
-		this.mvname = mvname;
-	}
-
+	
 	public int getTnum() {
 		return tnum;
 	}
@@ -65,6 +54,30 @@ public class Order implements Serializable {
 
 	public void setHnum(int hnum) {
 		this.hnum = hnum;
+	}
+
+	public int getSeat() {
+		return seat;
+	}
+
+	public void setSeat(int seat) {
+		this.seat = seat;
+	}
+
+	public long getCinemaId() {
+		return cinemaId;
+	}
+
+	public void setCinemaId(long cinemaId) {
+		this.cinemaId = cinemaId;
+	}
+
+	public long getMovieId() {
+		return movieId;
+	}
+
+	public void setMovieId(long movieId) {
+		this.movieId = movieId;
 	}
 
 

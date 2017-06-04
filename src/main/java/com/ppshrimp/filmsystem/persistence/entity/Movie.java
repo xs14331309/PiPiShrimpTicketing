@@ -22,6 +22,7 @@ public class Movie implements Serializable {
 	private String director;
     private String actor;
     private String brief;
+    private String type;
     private int length;
     private float score;
     private Date releaseTime;
@@ -30,24 +31,12 @@ public class Movie implements Serializable {
     private Set<CinemaMoviePos> cmPos = new HashSet<>();
     
     /*
-     * private String type;
      * private String language;
      * */
     
     public Movie() {
     	super();
     }
-    
-	public Movie(String moviename, String actor, String brief, String director, int length, float score, Date rDate, Date sDate) {
-		this.moviename = moviename;
-		this.actor = actor;
-		this.brief = brief;
-		this.director = director;
-		this.length = length;
-		this.score = score;
-		this.releaseTime = rDate;
-		this.shelfTime = sDate;
-	}
 	
 	public long getMovieId() {
 		return movieId;
@@ -123,6 +112,14 @@ public class Movie implements Serializable {
 	@JsonBackReference
 	public void setCmPos(Set<CinemaMoviePos> cmPos) {
 		this.cmPos = cmPos;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

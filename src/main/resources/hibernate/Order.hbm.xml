@@ -11,9 +11,10 @@
         </id>
         <!-- 其他属性，name对应实体类的属性，column对应关系型数据库表的列 -->
         <property name="username" column="username" type="string" />
-        <property name="ciname" column="ciname" type="string" />
-        <property name="mvname" column="mvname" type="string" />
+        <property name="cinemaId" column="cinemaId" type="long" />
+        <property name="movieId" column="movieId" type="long" />
         <property name="tnum" column="tnum" type="integer" />
         <property name="hnum" column="hnum" type="integer" />
+        <property name="seat" column="seat" type="integer" />
     </class>
 </hibernate-mapping>
