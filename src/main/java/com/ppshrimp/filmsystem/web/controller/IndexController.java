@@ -57,4 +57,10 @@ public class IndexController {
 		log.debug("get login page");
 		return "hello";
 	}   
+    
+    @RequestMapping(value="/chat", method=RequestMethod.GET) 
+	public String getChatPage(){
+		log.debug("get login page");
+		return "chat";
+	} 
 }

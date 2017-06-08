@@ -1,35 +1,17 @@
 # Movie
-INSERT INTO MOVIE VALUES(
-    NULL,
-    '银河护卫队',
-    'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg',
-    '詹姆斯．古恩',
-    '克里斯．普拉特 /佐伊．索尔达娜 /戴夫．巴蒂斯塔',
-    '银河护卫队在本集中穿越宇宙，继续外太空的史诗冒险之旅。他们必须共同作战，守护彼此；同时要解开“星爵”彼得．奎尔的身世之谜。旧日敌人变为盟友，漫画中深受喜爱的角色也会现身，对护卫队出手援助。',
-    '136', 
-    '8.0',
-    '2017-05-26 00:00:00',
-    '2017-05-28 00:00:00');
+INSERT INTO MOVIE(moviename, imgUrl, director, actor, brief, length, score, releaseTime, shelfTime, type, bannerUrl) VALUES('银河护卫队', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg', '詹姆斯．古恩', '克里斯．普拉特 /佐伊．索尔达娜 /戴夫．巴蒂斯塔', '银河护卫队在本集中穿越宇宙，继续外太空的史诗冒险之旅。他们必须共同作战，守护彼此；同时要解开“星爵”彼得．奎尔的身世之谜。旧日敌人变为盟友，漫画中深受喜爱的角色也会现身，对护卫队出手援助。', '136', '8', '2017-05-26', '2017-05-28', '科幻\n', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg');
+INSERT INTO MOVIE(moviename, imgUrl, director, actor, brief, length, score, releaseTime, shelfTime, type, bannerUrl) VALUES('摔跤吧！爸爸', 'http://img5.gewara.com/cw270h360/images/movie/201704/s3a96b772_15b9efb61aa__7d57.jpg', '尼特什·提瓦瑞', '阿米尔·汗 /萨卡诗·泰瓦 /法缇玛·萨那', '马哈维亚 辛格 珀尕（阿米尔汗饰）曾是印度国家摔跤冠军，因生活所迫放弃摔跤。他希望让儿子可以帮他完成梦想——赢得世界级金牌。结果生了四个女儿本以为梦想就此破碎的辛格却意外发现女儿身上的惊人天赋，\n\n    看到冠军希望的他决定不能让女儿的天赋浪费，像其他女孩一样只能洗衣做饭过一生，再三考虑之后，与妻子约定一年时间按照摔跤手的标准训练两个女儿：换掉裙子 、剪掉了长发，让她们练习摔跤，并赢得一个又一\n\n    个冠军，最终赢来了成为榜样激励千千万万女性的机会...', '140', '8', '2016-05-27', '2018-05-28', '教育', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg');
+INSERT INTO MOVIE(moviename, imgUrl, director, actor, brief, length, score, releaseTime, shelfTime, type, bannerUrl) VALUES('银河护卫队', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg', '詹姆斯．古恩', '克里斯．普拉特 /佐伊．索尔达娜 /戴夫．巴蒂斯塔', '银河护卫队在本集中穿越宇宙，继续外太空的史诗冒险之旅。他们必须共同作战，守护彼此；同时要解开“星爵”彼得．奎尔的身世之谜。旧日敌人变为盟友，漫画中深受喜爱的角色也会现身，对护卫队出手援助。', '136', '8', '2017-06-10', '2017-06-20', '科幻', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg');
+INSERT INTO MOVIE(moviename, imgUrl, director, actor, brief, length, score, releaseTime, shelfTime, type, bannerUrl) VALUES('银河护卫队2', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg', '詹姆斯．古恩', '克里斯．普拉特 /佐伊．索尔达娜 /戴夫．巴蒂斯塔', '银河护卫队在本集中穿越宇宙，继续外太空的史诗冒险之旅。他们必须共同作战，守护彼此；同时要解开“星爵”彼得．奎尔的身世之谜。旧日敌人变为盟友，漫画中深受喜爱的角色也会现身，对护卫队出手援助。', '136', '8', '2017-06-12', '2017-06-22', '科幻', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg');
+INSERT INTO MOVIE(moviename, imgUrl, director, actor, brief, length, score, releaseTime, shelfTime, type, bannerUrl) VALUES('银河护卫队3', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg', '詹姆斯．古恩', '克里斯．普拉特 /佐伊．索尔达娜 /戴夫．巴蒂斯塔', '银河护卫队在本集中穿越宇宙，继续外太空的史诗冒险之旅。他们必须共同作战，守护彼此；同时要解开“星爵”彼得．奎尔的身世之谜。旧日敌人变为盟友，漫画中深受喜爱的角色也会现身，对护卫队出手援助。', '136', '8', '2017-06-01', '2017-06-22', '科幻', 'http://images.wandafilm.com/uploadServer/resource/images/2017/04/20170405093914820631.jpg');
 
-INSERT INTO MOVIE VALUES(
-    NULL,
-    '摔跤吧！爸爸',
-    'http://img5.gewara.com/cw270h360/images/movie/201704/s3a96b772_15b9efb61aa__7d57.jpg',
-    '尼特什·提瓦瑞',
-    '阿米尔·汗 /萨卡诗·泰瓦 /法缇玛·萨那',
-    '马哈维亚 辛格 珀尕（阿米尔汗饰）曾是印度国家摔跤冠军，因生活所迫放弃摔跤。他希望让儿子可以帮他完成梦想——赢得世界级金牌。结果生了四个女儿本以为梦想就此破碎的辛格却意外发现女儿身上的惊人天赋，
-    看到冠军希望的他决定不能让女儿的天赋浪费，像其他女孩一样只能洗衣做饭过一生，再三考虑之后，与妻子约定一年时间按照摔跤手的标准训练两个女儿：换掉裙子 、剪掉了长发，让她们练习摔跤，并赢得一个又一
-    个冠军，最终赢来了成为榜样激励千千万万女性的机会...',
-    '140', 
-    '8.0',
-    '2016-05-27 00:00:00',
-    '2018-05-28 00:00:00');
  
  # Cinema
- INSERT INTO CINEMA VALUES(NULL,'广州万达1','广州','+8613800000000', '30','60');
- INSERT INTO CINEMA VALUES(NULL,'广州万达2','广州','+8613811111111', '40','70');
- INSERT INTO CINEMA VALUES(NULL,'上海万达1','上海','+8613811111111', '50','80');
- INSERT INTO CINEMA VALUES(NULL,'上海万达2','上海','+8613811111111', '60','90');
+INSERT INTO CINEMA(ciname, phone, longitude, latitude, city, area, address) VALUES ('广州万达1',  '+8613800000000', '30', '60', '广州', '番禺区', '五一路100号');
+INSERT INTO CINEMA(ciname, phone, longitude, latitude, city, area, address) VALUES ( '广州万达2',  '+8613811111111', '40', '70', '广州', '天河区', '八一路200号');
+INSERT INTO CINEMA(ciname, phone, longitude, latitude, city, area, address) VALUES ('上海万达1',  '+8613811111111', '50', '80', '上海', '浦东区', '人民路300号');
+INSERT INTO CINEMA(ciname, phone, longitude, latitude, city, area, address) VALUES ('上海万达2',  '+8613811111111', '60', '90', '上海', '浦西区', '北京路150号');
+
 
 
 # CMPos
@@ -159,6 +141,5 @@ INSERT INTO CMPOSITION(cmId, pos, tnum, hnum, cinemaId, movieId, price, time) VA
 
   
  
-
  
  

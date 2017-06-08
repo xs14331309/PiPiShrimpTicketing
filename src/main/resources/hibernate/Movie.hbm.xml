@@ -29,6 +29,7 @@
         </id>
         <property name="moviename" column="moviename" type="string"></property>
         <property name="imgUrl" column="imgUrl" type="string"></property>
+        <property name="bannerUrl" column="bannerUrl" type="string"></property>
         <property name="director" column="director" type="string"></property>
         <property name="actor" column="actor" type="string"></property>
         <property name="brief" column="brief" type="string"></property>

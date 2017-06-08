@@ -45,20 +45,6 @@ public class BookController {
 	@Autowired
 	private OrderService orderService;
 	
-	// /book/cinema
-	@RequestMapping(value="/cinema", method=RequestMethod.GET)
-	public @ResponseBody List<Cinema> getAllCinema() {
-		return cinemaService.getAllCinema();
-	}
-	
-	// book/csearch?city=string
-	@RequestMapping(value="/asearch/city/{cityname}", method=RequestMethod.GET)
-	public @ResponseBody List<Cinema> getCinemasByAddr(
-			@PathVariable("city") String city) {
-		return cinemaService.getCinemasByAddr(city);
-		
-	}
-	
 	@RequestMapping(value="/asearch/pos/{lo}/{la}", method=RequestMethod.GET)
 	public @ResponseBody List<Cinema> getCinemasByPos(
 			@PathVariable("lo") float longitude, @PathVariable("la") float lattitude) {
@@ -116,6 +102,7 @@ public class BookController {
 			String[] seats = seatsString.split("_");
 			List<Order> olist = new ArrayList<>();
 			String pos = cmPosService.searchPosByCidMidTnumHnum(cid, mid, tnum, hnum);
+			float price = cmPosService.searchPriceByCidMidTnumHnum(cid, mid, tnum, hnum);
 			StringBuilder strBuilder = new StringBuilder(pos);
 			for (String seat : seats) {
 				int s = Integer.parseInt(seat);
@@ -129,6 +116,7 @@ public class BookController {
 		        	order.setTnum(tnum);
 		        	order.setHnum(hnum);
 		        	order.setSeat(s);
+		        	order.setPrice(price);
 	    			olist.add(order);
 	    			}
 	    		else {
@@ -142,6 +130,7 @@ public class BookController {
 			}
 			cmPosService.modifyPosByCidMidTnumHnum(strBuilder.toString(), cid, mid, tnum, hnum);
 			map.put("result", "success");
+			//map.put("price", )
 			return map;
 
 		} catch (Exception e) {

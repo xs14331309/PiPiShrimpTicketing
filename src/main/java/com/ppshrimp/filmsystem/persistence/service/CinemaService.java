@@ -24,8 +24,8 @@ public class CinemaService {
 	}
 	
 	// 根据用户城市查找电影院
-	public List<Cinema> getCinemasByAddr(String city) {
-		return cinemaDao.getByAddr(city);
+	public List<Cinema> getCinemasByCity(String city) {
+		return cinemaDao.getByCity(city);
 	}
 	
 	// 查找用户附近电影院GPS

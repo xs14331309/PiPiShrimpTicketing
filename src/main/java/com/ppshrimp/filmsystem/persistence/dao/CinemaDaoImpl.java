@@ -28,8 +28,8 @@ public class CinemaDaoImpl implements CinemaDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cinema> getByAddr(String city) {
-		String hql = "from Cinema c where c.address like :param" ;  
+	public List<Cinema> getByCity(String city) {
+		String hql = "from Cinema c where c.city like :param" ;  
     	List<Cinema> cinemas = (List<Cinema>)sessionFactory.getCurrentSession()
 						        		.createQuery(hql)
 						        		.setString("param", "%" + city + "%")

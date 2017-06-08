@@ -15,7 +15,9 @@ public class Cinema implements Serializable {
     
 	private long cinemaId;
 	private String ciname;
-	private String address; // 城市
+	private String city ; // 城市
+	private String area; // 区
+	private String address;
 	private String phone;
 	private float longitude; // 维度
 	private float latitude; // 经度
@@ -24,14 +26,6 @@ public class Cinema implements Serializable {
 	
 	public Cinema() {
 		super();
-	}
-	
-	public Cinema(String ciname, String address, String phone, float longitude, float latitude) {
-		this.ciname = ciname;
-		this.address = address;
-		this.phone = phone;
-		this.longitude = longitude;
-		this.latitude = latitude;
 	}
 	
 	public long getCinemaId() {
@@ -78,6 +72,23 @@ public class Cinema implements Serializable {
 	public Set<CinemaMoviePos> getCmPos() {
 		return cmPos;
 	}
+	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+	
 
 	// 不加@JsonIgnore则造成Json解析的双向循环，导致崩溃
 	@JsonBackReference

@@ -2,6 +2,7 @@
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/dao/MovieDaoImpl.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/util/DateHelper.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/dao/OrderDao.java
+/home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/interceptor/HandshakeInterceptor.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/entity/CinemaMoviePos.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/controller/BookController.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/dao/CinemaDaoImpl.java
@@ -13,9 +14,11 @@
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/util/ThHelper.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/service/CMPosService.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/entity/Movie.java
+/home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/controller/CinemaContorller.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/service/UserService.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/entity/Cinema.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/dao/CMPosDao.java
+/home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/util/MvHelper.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/controller/MovieController.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/entity/User.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/entity/Order.java
@@ -26,3 +29,4 @@
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/controller/IndexController.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/web/controller/LoginController.java
 /home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/persistence/dao/OrderDaoImpl.java
+/home/water/eclipse/workspace2/PiPiShrimpTicketing/src/main/java/com/ppshrimp/filmsystem/util/WebsocketEndPoint.java

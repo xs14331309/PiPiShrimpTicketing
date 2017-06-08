@@ -3,13 +3,16 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/websocket 
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd">
  
    <!-- 启用Spring基于annotation的DI, 使用户可以在Spring MVC中使用Spring的强大功能。 激活 @Required 
 		@Autowired,JSR 250's @PostConstruct, @PreDestroy and @Resource 等标注 -->
@@ -24,7 +27,7 @@
 	<mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>  
     <mvc:resources mapping="/css/**" location="/WEB-INF/static/css/"/>  
     <mvc:resources mapping="/images/**" location="/WEB-INF/static/images/"/>
-    <mvc:resources mapping="/fonts/**" location="/WEB-INF/static/fonts/"/>  
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/static/fonts/"/>
 
 	<!-- SpringResourceTemplateResolver automatically integrates with Spring's own -->
 	<!-- resource resolution infrastructure, which is highly recommended.          -->
@@ -58,6 +61,23 @@
 	  <property name="templateEngine" ref="templateEngine" />
 	  <property name="characterEncoding" value="UTF-8"/>
 	</bean>
+	
+	<!-- <mvc:interceptors>  
+	    <mvc:interceptor>  
+	        <mvc:mapping path="/test/number.do"/>  
+	        定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的  
+	        <bean class="com.host.app.web.interceptor.LoginInterceptor"/>  
+	    </mvc:interceptor>  
+    </mvc:interceptors>  -->
+    
+    <bean id="websocket" class="com.ppshrimp.filmsystem.util.WebsocketEndPoint"/>  
+  
+	<websocket:handlers>  
+	    <websocket:mapping path="/websocket" handler="websocket"/>  
+	    <websocket:handshake-interceptors>  
+	    <bean class="com.ppshrimp.filmsystem.web.interceptor.HandshakeInterceptor"/>  
+	    </websocket:handshake-interceptors>  
+	</websocket:handlers>  
 	
 </beans>
 

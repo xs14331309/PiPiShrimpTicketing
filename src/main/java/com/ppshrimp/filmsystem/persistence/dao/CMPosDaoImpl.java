@@ -53,6 +53,25 @@ public class CMPosDaoImpl implements CMPosDao {
 		}
 		
 	}
+	
+	@Override
+	public float getPrice(long cid, long mid, int tnum, int hnum) {
+		try{
+			String hql = "select price from CinemaMoviePos c where c.cinema.cinemaId = :cid and c.movie.movieId = :mid "
+					+ "and c.tnum = :tnum and c.hnum = :hnum";
+			float price = (float) sessionFactory.getCurrentSession()
+					.createQuery(hql)
+					.setLong("cid", cid)
+					.setLong("mid", mid)
+					.setInteger("tnum", tnum)
+					.setInteger("hnum", hnum)
+					.uniqueResult();
+			return price;
+		} catch (Exception e) {
+			return -1;
+		}
+		
+	}
 
 	@Override
 	public boolean modifyPos(String newPos, long cid, long mid, int tnum, int hnum) {

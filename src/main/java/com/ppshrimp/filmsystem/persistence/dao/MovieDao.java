@@ -11,7 +11,11 @@ public interface MovieDao {
     
     List<Movie> findAllOnShow(Date date);
     
-    List<Movie> findTopTen(Date date);
+    //List<Movie> findTopTen(Date date);
+    
+    List<Movie> findRecommend(Date date);
+    
+    List<Movie> findCommingSoon(Date now, Date After);
     
     List<Movie> searchMovieName(String msg);
     

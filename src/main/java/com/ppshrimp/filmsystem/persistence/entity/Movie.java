@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class Movie implements Serializable {
+public class Movie implements Serializable, Comparable<Movie> {
     /**
 	 * 
 	 */
@@ -19,6 +19,7 @@ public class Movie implements Serializable {
 	private long movieId;
 	private String moviename;
 	private String imgUrl;
+	private String bannerUrl;
 	private String director;
     private String actor;
     private String brief;
@@ -120,6 +121,19 @@ public class Movie implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	@Override
+	public int compareTo(Movie o) {
+		return Long.compare(this.getMovieId(), o.getMovieId());
+	}
+
+	public String getBannerUrl() {
+		return bannerUrl;
+	}
+
+	public void setBannerUrl(String bannerUrl) {
+		this.bannerUrl = bannerUrl;
 	}
 
 }

@@ -16,5 +16,6 @@
         <property name="tnum" column="tnum" type="integer" />
         <property name="hnum" column="hnum" type="integer" />
         <property name="seat" column="seat" type="integer" />
+        <property name="price" column="price" type="float" />
     </class>
 </hibernate-mapping>

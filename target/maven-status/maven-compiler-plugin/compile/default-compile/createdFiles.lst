@@ -15,10 +15,14 @@ com/ppshrimp/filmsystem/web/controller/IndexController.class
 com/ppshrimp/filmsystem/persistence/entity/CinemaMoviePos.class
 com/ppshrimp/filmsystem/persistence/dao/CinemaDao.class
 com/ppshrimp/filmsystem/persistence/service/UserService.class
+com/ppshrimp/filmsystem/web/interceptor/HandshakeInterceptor.class
 com/ppshrimp/filmsystem/persistence/entity/Order.class
+com/ppshrimp/filmsystem/util/WebsocketEndPoint.class
 com/ppshrimp/filmsystem/persistence/service/MovieService.class
 com/ppshrimp/filmsystem/persistence/dao/OrderDaoImpl.class
+com/ppshrimp/filmsystem/web/controller/CinemaContorller.class
 com/ppshrimp/filmsystem/web/controller/BookController.class
+com/ppshrimp/filmsystem/util/MvHelper.class
 com/ppshrimp/filmsystem/persistence/service/OrderService.class
 com/ppshrimp/filmsystem/web/controller/RegisterController.class
 com/ppshrimp/filmsystem/persistence/entity/Cinema.class

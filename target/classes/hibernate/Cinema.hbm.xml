@@ -25,6 +25,8 @@
             <generator class="native"></generator>
         </id>
         <property name="ciname" column="ciname" type="string"></property>
+        <property name="city" column="city" type="string"></property>
+        <property name="area" column="area" type="string"></property>
         <property name="address" column="address" type="string"></property>
         <property name="phone" column="phone" type="string"></property>
         <property name="longitude" column="longitude" type="float"></property>

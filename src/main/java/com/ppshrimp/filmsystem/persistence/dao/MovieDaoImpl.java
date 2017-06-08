@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.ppshrimp.filmsystem.persistence.entity.Cinema;
 import com.ppshrimp.filmsystem.persistence.entity.Movie;
 
+import javafx.scene.chart.PieChart.Data;
+
 @Repository
 public class MovieDaoImpl implements MovieDao {
 	
@@ -57,7 +59,7 @@ public class MovieDaoImpl implements MovieDao {
         return movies.isEmpty() ? null : movies.get(0);
 	}
 
-	@Override
+/*	@Override
 	public List<Movie> findTopTen(Date date) {
         String hql = "from Movie m where ? between m.releaseTime and m.shelfTime Order by m.score desc";
 		
@@ -65,8 +67,22 @@ public class MovieDaoImpl implements MovieDao {
 		List<Movie> movies = sessionFactory.getCurrentSession()
         		.createQuery(hql)
         		.setParameter(0, date)
+        		.setMaxResults(30)
         		.list();  
 		
+		return movies;
+	}*/
+	
+	@Override
+	public List<Movie> findRecommend(Date date) {
+		String hql = "from Movie m where (? between m.releaseTime and m.shelfTime) and m.bannerUrl is not null Order by m.score asc";
+		
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setParameter(0, date)
+        		.setMaxResults(10)
+        		.list();  
 		return movies;
 	}
 
@@ -78,6 +94,19 @@ public class MovieDaoImpl implements MovieDao {
         		.createQuery(hql)
         		.setString("param0", "%" + msg + "%")
         		.setString("param1", msg+"%")
+        		.list();
+		return movies;
+	}
+	
+	@Override
+	public List<Movie> findCommingSoon(Date now, Date after) {
+		String hql = "from Movie m where m.releaseTime between :now and :after order by m.releaseTime";
+		@SuppressWarnings("unchecked")
+		List<Movie> movies = sessionFactory.getCurrentSession()
+        		.createQuery(hql)
+        		.setParameter("now", now)
+        		.setParameter("after", after)
+        		.setMaxResults(30)
         		.list();
 		return movies;
 	}
@@ -117,6 +146,8 @@ public class MovieDaoImpl implements MovieDao {
         		.list();
 		return movies;
 	}
+
+
 
 
 }

@@ -8,7 +8,7 @@ import com.ppshrimp.filmsystem.persistence.entity.CinemaMoviePos;
 public interface CinemaDao {
     List<Cinema> getAll();
     
-    List<Cinema> getByAddr(String city);
+    List<Cinema> getByCity(String city);
     
     List<Cinema> getByPos(float lo, float la,  float threshold);
     

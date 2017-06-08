@@ -10,5 +10,7 @@ public interface CMPosDao {
     public String getPos(long cid, long mid, int tnum, int hnum);
 
 	public boolean modifyPos(String newPos, long cid, long mid, int tnum, int hum);
+	
+	public float getPrice(long cid, long mid, int tnum, int hnum);
 
  }

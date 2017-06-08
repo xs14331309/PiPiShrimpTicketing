@@ -17,6 +17,7 @@ public class Order implements Serializable {
 	private int tnum;
 	private int hnum;
 	private int seat;
+	private float price;
 
 	// 待定
 	// private float price;
@@ -78,6 +79,14 @@ public class Order implements Serializable {
 
 	public void setMovieId(long movieId) {
 		this.movieId = movieId;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 
