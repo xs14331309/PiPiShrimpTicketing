@@ -6,7 +6,7 @@ import sys
 import json
 import torndb
 import datetime
-import re
+#import re
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -15,21 +15,22 @@ mydb = {
   'host':'localhost',
   'database':'filmTicketing',
   'user':'root',
-  'password':'root',
+  'password':'Ym849539',
   'time_zone':'+8:00'
 }
-'''
+
 db = torndb.Connection(host=mydb['host'],
                       database=mydb['database'],
                       user = mydb['user'],
                       password=mydb['password'],
                       time_zone=mydb['time_zone'],
                       charset="utf8")
-'''
+
 url1 = "http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=1000"
 url3 = "http://m.maoyan.com/movie/list.json?type=coming&offset=0&limit=1000"
 url4 = "http://m.maoyan.com/cinemas.json"
-headers = {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
+headers = {'User_Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2723.3 Safari/537.36',
+        'Cookie': 'PHOENIX_ID=0a650c81-154a0633f47-a97843; _hc.v="\"e27e18eb-3a3d-4b40-b06a-cbe624c96048.1462979739\""; s_ViewType=10; JSESSIONID=877B00919AD417544F72F5A9953E54B4; aburl=1; cy=2; cye=beijing'}
 
 req1 = urllib2.Request(url1 , headers=headers)
 content1 = urllib2.urlopen(req1).read()
