@@ -58,8 +58,8 @@ public class CinemaDaoImpl implements CinemaDao {
 	@Override
 	public List<CinemaMoviePos> getById(long id) {
 		Cinema cinema = (Cinema) sessionFactory.getCurrentSession().get(Cinema.class, id);
-    	List<CinemaMoviePos> cmPos = new ArrayList<>(cinema.getCmPos());
-    	System.out.print(cmPos.size());
+    	        List<CinemaMoviePos> cmPos = new ArrayList<>(cinema.getCmPos());
+    	        System.out.print(cmPos.size());
 		return cmPos;
 	}
 
