@@ -32,7 +32,7 @@ Spring+SpringMVC+Hibernate基本框架的建立，完成配置，实现HelloWorl
 ### Modify
 修改后端架构，取消视图解析与参数绑定，改成Resful风格的WebService应用
 
-### TEST
+### Test
 一些Bug的修复和代码的修改
 
 ## 系统分析与设计文档
