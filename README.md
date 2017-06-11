@@ -17,3 +17,7 @@ Spring+SpringMVC+Hibernate基本框架的建立，完成配置，实现HelloWorl
 
 ### Add Movie
 在数据库中增加Movie实体，并提供了获取电影的API，返回格式为Json供前端解析使用
+
+## 前端开发
+- 前端部分Release版本路径：/src/main/webapp/WEB-INF/templates
+- 详情见[前端部分github地址](https://github.com/SophiaWoo/PiPiShrimp)
