@@ -38,3 +38,6 @@ Spring+SpringMVC+Hibernate基本框架的建立，完成配置，实现HelloWorl
 ## 系统分析与设计文档
 - 团队文档路径：/doc
 - 个人文档成员独自提交
+
+## 团队人员
+参见 /doc/t_PiPiShrimp_2_team_profile.pdf
