@@ -40,4 +40,4 @@ Spring+SpringMVC+Hibernate基本框架的建立，完成配置，实现HelloWorl
 - 个人文档成员独自提交
 
 ## 团队人员
-参见 /doc/t_PiPiShrimp_2_team_profile.pdf
+参见 [项目人员表](https://github.com/xs14331309/PiPiShrimpTicketing/blob/master/doc/t_PiPiShrimp_2_team_profile.pdf)
