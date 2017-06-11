@@ -7,6 +7,9 @@
 
 运行方式 mvn clean jetty:run
 
+## 项目运行预览
+![](/doc/pre.gif)
+
 ## 前端开发
 - 前端部分Release版本路径：/src/main/webapp/WEB-INF/templates
 - 详情见[前端部分github地址](https://github.com/SophiaWoo/PiPiShrimp)
